@@ -5,10 +5,11 @@
 ## Login   <antoine.hartwig@epitech.net>
 ## 
 ## Started on  Sat Oct 15 17:49:46 2016 Antoine Hartwig
-## Last update Mon Jan 30 17:32:46 2017 Antoine Hartwig
+## Last update Mon Jan 30 18:48:39 2017 Antoine Hartwig
 ##
 
 SRC	=	main.c		\
+		gather_map.c	\
 		display_h.c
 
 CC	=	gcc

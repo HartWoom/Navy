@@ -9,10 +9,10 @@ int	error_management(int ac, char **av)
       display_h();
       return (0);
     }
-  /* if (ac == 2) */
-  /*   check_map(av[1]); */
+  if (ac == 2)
+    gather_map(av[1]);
   /* else */
-  /*   check_map(av[2]); */
+  /*   gather_map(av[2]); */
   return (0);
 }
 
