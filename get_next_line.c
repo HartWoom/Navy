@@ -1,11 +1,11 @@
 /*
-** get_next_line.c for  in /home/louis.hatte/CPE_2016_getnextline
+** get_next_line.c for  in /home/louis.hatte/PSU_2016_navy
 ** 
 ** Made by Louis HATTE
 ** Login   <louis.hatte@epitech.net>
 ** 
-** Started on  Sat Jan 14 21:36:29 2017 Louis HATTE
-** Last update Sun Jan 15 13:00:37 2017 Louis HATTE
+** Started on  Tue Jan 31 13:08:22 2017 Louis HATTE
+** Last update Tue Jan 31 13:08:24 2017 Louis HATTE
 */
 
 #include "get_next_line.h"

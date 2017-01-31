@@ -5,22 +5,24 @@
 ## Login   <antoine.hartwig@epitech.net>
 ## 
 ## Started on  Sat Oct 15 17:49:46 2016 Antoine Hartwig
-## Last update Mon Jan 30 18:48:39 2017 Antoine Hartwig
+## Last update Tue Jan 31 13:00:12 2017 Louis HATTE
 ##
 
-SRC	=	main.c		\
-		gather_map.c	\
-		display_h.c
+SRC	= main.c \
+	  help.c \
+	  get_next_line.c \
+	  errorMap.c \
+	  errorMap2.c
 
-CC	=	gcc
+CC	= gcc
 
-OBJ	=	$(SRC:.c=.o)
+OBJ	= $(SRC:.c=.o)
 
-CFLAGS	=	-Iinclude/ -W -Wall -Wextra -pedantic -g3
+CFLAGS	= -Iinclude/ #-W -Wall -Wextra -pedantic -g3
 
-NAME	=	navy
+NAME	= navy
 
-RM	=	rm -rf
+RM	= rm -rf
 
 all:    $(NAME)
 
