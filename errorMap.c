@@ -37,3 +37,13 @@ int	gather_map(char *file)
   my_putchar('M');
   return (0);
 }
+
+int	errorLength(char **av)
+{
+  
+}
+
+int	errorMap(char **av)
+{
+  errorLength(av);
+}
