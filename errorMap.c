@@ -42,3 +42,13 @@ int	gather_map(char *file)
     return (-1);
   return (0);
 }
+
+int	errorLength(char **av)
+{
+  
+}
+
+int	errorMap(char **av)
+{
+  errorLength(av);
+}
