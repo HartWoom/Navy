@@ -5,11 +5,10 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:23:37 2017 Louis HATTE
-** Last update Tue Jan 31 13:07:46 2017 Louis HATTE
+** Last update Tue Jan 31 13:32:23 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
-#include "include/get_next_line.h"
 
 int	errorLength(int ac, char **av)
 {

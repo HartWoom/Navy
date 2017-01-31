@@ -5,17 +5,22 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:51:38 2017 Louis HATTE
-** Last update Tue Jan 31 12:59:44 2017 Louis HATTE
+** Last update Tue Jan 31 13:32:14 2017 Antoine Hartwig
 */
 
 #ifndef MY_H_
 # define MY_H_
+
+# ifndef READ_SIZE
+#  define READ_SIZE 42
+# endif /* !READ_SIZE */
 
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 void    my_putchar(char);
 int     my_strlen(char *);
@@ -27,6 +32,11 @@ char    *my_strcat(char *, char *);
 char    *my_strcopy(char *, int, int);
 char    **my_strToWordTab(char *, char);
 char    *my_wordTabToStr(char **, char);
+
+char    *my_split(char *, char *);
+char    *my_concatenate(char *, char *, int, bool);
+char    *my_readLine(int, char *, bool *);
+char    *get_next_line(const int);
 
 int	errorInput(int, char **);
 
