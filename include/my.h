@@ -1,11 +1,11 @@
 /*
-** my.h for navy in /home/antoine.hartwig/Epitech/PSU_2016/PSU_2016_navy_bootstrap
+** my.h for  in /home/louis.hatte/PSU_2016_navy/include
 ** 
-** Made by Antoine Hartwig
-** Login   <antoine.hartwig@epitech.net>
+** Made by Louis HATTE
+** Login   <louis.hatte@epitech.net>
 ** 
-** Started on  Mon Jan 30 09:10:43 2017 Antoine Hartwig
-** Last update Mon Jan 30 18:54:45 2017 Antoine Hartwig
+** Started on  Tue Jan 31 09:51:38 2017 Louis HATTE
+** Last update Tue Jan 31 12:59:44 2017 Louis HATTE
 */
 
 #ifndef MY_H_
@@ -17,18 +17,28 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-typedef struct	s_map
-{
-  char	**pos1;
-  char	**pos2;
-}	t_map;
+void    my_putchar(char);
+int     my_strlen(char *);
+void    my_putstr(char *);
+void    my_put_nbr(int);
+int     my_getnbr(char *);
+int     my_strcomp(char *, char *, int, int);
+char    *my_strcat(char *, char *);
+char    *my_strcopy(char *, int, int);
+char    **my_strToWordTab(char *, char);
+char    *my_wordTabToStr(char **, char);
 
-void	my_putstr(char *);
-void	my_put_nbr(int);
-void	my_putchar(char);
-int	my_getnbr(char *);
-int	my_str_cmp(char *, char *);
-void	display_h();
-int	gather_map(char *);
+int	errorInput(int, char **);
+
+void	hDisplay();
+
+int	my_getnbr2(char *);
+int	*lengthTabler();
+
+int	errorLength(int, char **);
+int	characters(char);
+int	errorLines(int, char **);
+int	chooseAv(int, char **);
+int	errorMap(int, char **);
 
 #endif /* !MY_H_ */

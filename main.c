@@ -5,30 +5,48 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 08:30:05 2017 Louis HATTE
-** Last update Tue Jan 31 08:46:33 2017 Louis HATTE
+** Last update Tue Jan 31 13:06:16 2017 Louis HATTE
 */
 
 #include "include/my.h"
 
-int	error_management(int ac, char **av)
+int	errorInput(int ac, char **av)
 {
+  int	r;
+
   if (ac != 2 && ac != 3)
     return (1);
-  if (my_str_cmp(av[1], "-h") == 0)
-    {
-      display_h();
-      return (0);
-    }
   if (ac == 2)
-    gather_map(av[1]);
-  /* else */
-  /*   gather_map(av[2]); */
+    {
+      if (!(my_strcomp(av[1], "-h", 0, my_strlen(av[1]))) &&
+	  open(av[1], O_RDONLY) == -1)
+	return (1);
+    }
+  else
+    {
+      if (open(av[2], O_RDONLY) == -1)
+	return (1);
+    }
   return (0);
 }
 
 int	main(int ac, char **av)
 {
-  if (error_management(ac, av) || errorMap(av))
-    return (84);
+  if (errorInput(ac, av))
+    {
+      my_putstr("NOP");
+      return (84);
+    }
+  if (my_strcomp(av[1], "-h", 0, my_strlen(av[1])))
+    {
+      hDisplay();
+      return (0);
+    }
+  if (errorMap(ac, av))
+    {
+      my_putstr("NOP");
+      return (84);
+    }
+  my_putstr("YES");
   return (0);
 }
