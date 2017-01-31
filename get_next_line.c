@@ -5,10 +5,10 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 13:08:22 2017 Louis HATTE
-** Last update Tue Jan 31 13:08:24 2017 Louis HATTE
+** Last update Tue Jan 31 13:35:02 2017 Antoine Hartwig
 */
 
-#include "get_next_line.h"
+#include "my.h"
 
 char	*my_split(char *str, char stat[])
 {
