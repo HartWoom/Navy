@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:23:37 2017 Louis HATTE
-** Last update Thu Feb  2 13:18:55 2017 Louis HATTE
+** Last update Thu Feb  2 13:27:31 2017 Louis HATTE
 */
 
 #include "include/my.h"
@@ -80,7 +80,7 @@ int	errorMap(int ac, char **av)
 {
   if (errorLines(ac, av) ||
       errorLength(ac, av) ||
-      check_coords(chooseAv(ac, av)) == -1)
+      check_coords(chooseAv(ac, av)))
     return (1);
   return (0);
 }
