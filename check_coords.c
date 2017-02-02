@@ -1,3 +1,13 @@
+/*
+** check_coords.c for  in /home/louis.hatte/PSU_2016_navy
+** 
+** Made by Louis HATTE
+** Login   <louis.hatte@epitech.net>
+** 
+** Started on  Thu Feb  2 13:15:45 2017 Louis HATTE
+** Last update Thu Feb  2 13:22:58 2017 Louis HATTE
+*/
+
 #include "include/my.h"
 
 int             check_coords_part2(t_coords *var)
@@ -19,14 +29,18 @@ int             check_coords_part2(t_coords *var)
   return (0);
 }
 
-int             check_coords(char *buffer)
+int             check_coords(int fd)
 {
   int           i;
   int           k;
   t_coords      *var;
+  char		*buffer;
 
+  if ((buffer = malloc(sizeof(char) * 33)) == NULL)
+    return (1);
+  read(fd, buffer, 1024);
   if ((var = malloc(sizeof(t_coords))) == NULL)
-    return (-1);
+    return (1);
   i = 2;
   k = 0;
   while (++k != 5)
@@ -37,7 +51,7 @@ int             check_coords(char *buffer)
       var->char3 = buffer[i + 3];
       var->char4 = buffer[i + 4];
       if (check_coords_part2(var) == -1)
-        return (-1);
+        return (1);
       i += 8;
     }
   return (0);

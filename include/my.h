@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:51:38 2017 Louis HATTE
-** Last update Tue Jan 31 13:32:14 2017 Antoine Hartwig
+** Last update Thu Feb  2 13:20:13 2017 Louis HATTE
 */
 
 #ifndef MY_H_
@@ -21,6 +21,15 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdbool.h>
+
+typedef struct	s_coords
+{
+  int	size;
+  int	char1;
+  int	char2;
+  int	char3;
+  int	char4;
+}	t_coords;
 
 void    my_putchar(char);
 int     my_strlen(char *);
@@ -50,5 +59,8 @@ int	characters(char);
 int	errorLines(int, char **);
 int	chooseAv(int, char **);
 int	errorMap(int, char **);
+
+int	check_coords(int);
+int	check_coords_part2(t_coords *);
 
 #endif /* !MY_H_ */

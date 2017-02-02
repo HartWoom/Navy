@@ -5,12 +5,13 @@
 ## Login   <antoine.hartwig@epitech.net>
 ## 
 ## Started on  Sat Oct 15 17:49:46 2016 Antoine Hartwig
-## Last update Tue Jan 31 13:00:12 2017 Louis HATTE
+## Last update Thu Feb  2 13:18:34 2017 Louis HATTE
 ##
 
 SRC	= main.c \
 	  help.c \
 	  get_next_line.c \
+	  check_coords.c \
 	  errorMap.c \
 	  errorMap2.c
 
