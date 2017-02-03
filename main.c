@@ -5,15 +5,13 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 08:30:05 2017 Louis HATTE
-** Last update Tue Jan 31 13:06:16 2017 Louis HATTE
+** Last update Fri Feb  3 10:24:51 2017 Louis HATTE
 */
 
 #include "include/my.h"
 
 int	errorInput(int ac, char **av)
 {
-  int	r;
-
   if (ac != 2 && ac != 3)
     return (1);
   if (ac == 2)
@@ -47,6 +45,7 @@ int	main(int ac, char **av)
       my_putstr("NOP");
       return (84);
     }
+  createMap(ac, av);
   my_putstr("YES");
   return (0);
 }

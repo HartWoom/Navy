@@ -5,21 +5,21 @@
 ## Login   <antoine.hartwig@epitech.net>
 ## 
 ## Started on  Sat Oct 15 17:49:46 2016 Antoine Hartwig
-## Last update Thu Feb  2 13:18:34 2017 Louis HATTE
+## Last update Fri Feb  3 10:24:17 2017 Louis HATTE
 ##
 
 SRC	= main.c \
 	  help.c \
-	  get_next_line.c \
-	  check_coords.c \
 	  errorMap.c \
-	  errorMap2.c
+	  errorMap2.c \
+	  my_strtowordtab2.c \
+	  createMap.c
 
 CC	= gcc
 
 OBJ	= $(SRC:.c=.o)
 
-CFLAGS	= -Iinclude/ #-W -Wall -Wextra -pedantic -g3
+CFLAGS	= -Iinclude/ -W -Wall -Wextra -pedantic -g3
 
 NAME	= navy
 
@@ -28,7 +28,7 @@ RM	= rm -rf
 all:    $(NAME)
 
 $(NAME):	$(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L. -lmy
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L. -lmy -lgnl
 
 clean:
 	$(RM) $(OBJ)

@@ -5,14 +5,14 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:51:38 2017 Louis HATTE
-** Last update Thu Feb  2 13:20:13 2017 Louis HATTE
+** Last update Fri Feb  3 08:42:50 2017 Louis HATTE
 */
 
 #ifndef MY_H_
 # define MY_H_
 
 # ifndef READ_SIZE
-#  define READ_SIZE 42
+#  define READ_SIZE 12
 # endif /* !READ_SIZE */
 
 #include <sys/types.h>
@@ -30,6 +30,12 @@ typedef struct	s_coords
   int	char3;
   int	char4;
 }	t_coords;
+
+typedef struct	s_navy
+{
+  char	**map1;
+  char	**map2;
+}	t_navy;
 
 void    my_putchar(char);
 int     my_strlen(char *);
@@ -62,5 +68,11 @@ int	errorMap(int, char **);
 
 int	check_coords(int);
 int	check_coords_part2(t_coords *);
+
+void	createMap(int, char **);
+
+int	my_lines2(char *, char);
+int	*my_columns2(char *, char, int);
+char	**my_strToWordTab2(char *, char);
 
 #endif /* !MY_H_ */

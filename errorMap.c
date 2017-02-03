@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:23:37 2017 Louis HATTE
-** Last update Thu Feb  2 13:27:31 2017 Louis HATTE
+** Last update Fri Feb  3 10:25:28 2017 Louis HATTE
 */
 
 #include "include/my.h"
@@ -23,7 +23,7 @@ int	errorLength(int ac, char **av)
     return (1);
   i = 0;
   a = 0;
-  while (line = get_next_line(fd))
+  while ((line = get_next_line(fd)))
     {
       a = my_getnbr2(line);
       while (a != length[i] && ++i < 4);
