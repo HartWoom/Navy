@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:51:38 2017 Louis HATTE
-** Last update Fri Feb  3 15:04:51 2017 Antoine Hartwig
+** Last update Fri Feb  3 15:07:36 2017 Antoine Hartwig
 */
 
 #ifndef MY_H_
@@ -21,6 +21,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <signal.h>
 
 typedef struct	s_coords
 {
