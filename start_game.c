@@ -1,7 +1,7 @@
 #include "include/my.h"
 #include "include/global.h"
 
-void	host_order(int sig, siginfo_t *info, void *context)
+void	host_order(int sig)//, siginfo_t *info, void *context)
 {
   if (sig == SIGUSR1)
     {
@@ -13,7 +13,7 @@ void	host_order(int sig, siginfo_t *info, void *context)
     }
 }
 
-void	client_order(int sig, siginfo_t *info, void *context)
+void	client_order(int sig)//, siginfo_t *info, void *context)
 {
   if (sig == SIGUSR1)
     {

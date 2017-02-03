@@ -5,13 +5,15 @@
 ## Login   <antoine.hartwig@epitech.net>
 ## 
 ## Started on  Sat Oct 15 17:49:46 2016 Antoine Hartwig
-## Last update Fri Feb  3 10:24:17 2017 Louis HATTE
+## Last update Fri Feb  3 15:09:39 2017 Antoine Hartwig
 ##
 
 SRC	= main.c \
 	  help.c \
 	  errorMap.c \
 	  errorMap2.c \
+	  encryption.c \
+	  start_game.c \
 	  my_strtowordtab2.c \
 	  createMap.c
 
