@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:51:38 2017 Louis HATTE
-** Last update Fri Feb  3 08:42:50 2017 Louis HATTE
+** Last update Fri Feb  3 15:04:51 2017 Antoine Hartwig
 */
 
 #ifndef MY_H_
@@ -74,5 +74,10 @@ void	createMap(int, char **);
 int	my_lines2(char *, char);
 int	*my_columns2(char *, char, int);
 char	**my_strToWordTab2(char *, char);
+
+int     start_game(int, char **);
+void    order(int, siginfo_t *, void *);
+
+void    encryption(char *, char *);
 
 #endif /* !MY_H_ */

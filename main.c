@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 08:30:05 2017 Louis HATTE
-** Last update Fri Feb  3 10:24:51 2017 Louis HATTE
+** Last update Fri Feb  3 15:01:48 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
@@ -31,21 +31,16 @@ int	errorInput(int ac, char **av)
 int	main(int ac, char **av)
 {
   if (errorInput(ac, av))
-    {
-      my_putstr("NOP");
-      return (84);
-    }
+    return (84);
   if (my_strcomp(av[1], "-h", 0, my_strlen(av[1])))
     {
       hDisplay();
       return (0);
     }
   if (errorMap(ac, av))
-    {
-      my_putstr("NOP");
-      return (84);
-    }
+    return (84);
   createMap(ac, av);
-  my_putstr("YES");
+  if (start_game(ac, av) == -1)
+    return (84);
   return (0);
 }
