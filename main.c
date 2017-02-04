@@ -5,10 +5,20 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 08:30:05 2017 Louis HATTE
-** Last update Fri Feb  3 15:01:48 2017 Antoine Hartwig
+** Last update Sat Feb  4 14:39:24 2017 Louis HATTE
 */
 
 #include "include/my.h"
+
+char    *my_swap(char *str, int a, int b)
+{
+  char tmp;
+
+  tmp = str[a];
+  str[a] = str[b];
+  str[b] = tmp;
+  return (str);
+}
 
 int	errorInput(int ac, char **av)
 {
@@ -22,7 +32,7 @@ int	errorInput(int ac, char **av)
     }
   else
     {
-      if (open(av[2], O_RDONLY) == -1)
+      if (open(av[2], O_RDONLY) == -1) //Condition pour un PID existant
 	return (1);
     }
   return (0);
@@ -37,9 +47,8 @@ int	main(int ac, char **av)
       hDisplay();
       return (0);
     }
-  if (errorMap(ac, av))
+  if (errorMap(ac, av) || createMap(ac, av))
     return (84);
-  createMap(ac, av);
   if (start_game(ac, av) == -1)
     return (84);
   return (0);

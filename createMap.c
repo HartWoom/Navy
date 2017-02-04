@@ -5,77 +5,94 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb  2 13:37:17 2017 Louis HATTE
-** Last update Fri Feb  3 14:32:04 2017 Louis HATTE
+** Last update Sat Feb  4 14:39:28 2017 Louis HATTE
 */
 
 #include "include/my.h"
 
-int	find_char(char c)
+char	**horizontalBoat(char **map, char *str, int a)
 {
-  if (c >= '0' && c <= '9')
-    return (1);
-  return (0);
-}
-
-char	**charNb(char **map, char *str, int a)
-{
-  int	tmp;
   int	i;
+  int	tmp;
 
-  tmp = a;
   i = 0;
-  if (str[2] == str[5])
+  tmp = a;
+  while (tmp > 0)
     {
-      while (tmp > 0)
-      	{
-	  map[str[3] - 46 + i]
-	    [str[2] - (str[2] - (2 * str[2] % 63)) - 2] = a + 48;
-      	  i = i + 1;
-      	  tmp--;
-      	}
-    }
-  else
-    {
-      while (tmp > 0)
-	{
-	  map[str[3] - 46]
-	    [str[2] - (str[2] - (2 * str[2] % 63)) - 2 + i] = a + 48;
-	  i = i + 2;
-	  tmp--;
-	}
+      if ((map[str[3] - 46]
+	   [str[2] - (str[2] - (2 * str[2] % 63)) - 2 + i]) != '.')
+	return (NULL);
+      map[str[3] - 46]
+	[str[2] - (str[2] - (2 * str[2] % 63)) - 2 + i] = a + 48;
+      i = i + 2;
+      tmp--;
     }
   return (map);
 }
 
-char	**nbChar(char **map, char *str, int a)
+char	**verticalBoat(char **map, char *str, int a)
 {
-  
+  int	i;
+  int	tmp;
+
+  i = 0;
+  tmp = a;
+  while (tmp > 0)
+    {
+      if (map[str[3] - 46 + i]
+	  [str[2] - (str[2] - (2 * str[2] % 63)) - 2] != '.')
+	return (NULL);
+      map[str[3] - 46 + i++]
+	[str[2] - (str[2] - (2 * str[2] % 63)) - 2] = a + 48;
+      tmp--;
+    }
+  return (map);
+}
+
+char	**putBoat(char **map, char *str, int a)
+{
+  if (str[2] == str[5])
+    {
+      if ((map = verticalBoat(map, str, a)) == NULL)
+	return (NULL);
+    }
+  else
+    {
+      if ((map = horizontalBoat(map, str, a)) == NULL)
+	return (NULL);
+    }
   return (map);
 }
 
 char	**putBoats(int ac, char **av, char **map)
 {
   char	*str;
-  int	a;
+  int	i;
   int	fd;
 
-  if (ac == 2)
-    fd = open(av[1], O_RDONLY);
-  else
-    fd = open(av[2], O_RDONLY);
+  fd = chooseAv(ac, av);
+  i = 0;
   while  ((str = get_next_line(fd)))
     {
-      a = my_getnbr2(str);
-      if (find_char(str[2]))
-	map = nbChar(map, str, a);
-      else
-	map = charNb(map, str, a);
+      while (str[i] != '\0')
+	{
+	  if (str[i] >= 'a' && str[i] <= 'h')
+	    str[i] = str[i] + 32;
+	  i++;
+	}
+      if (str[2] >= '0' && str[2] <= '9')
+	{
+	  str = my_swap(str, 2, 3);
+	  str = my_swap(str, 5, 6);
+	}
+      if ((map = putBoat(map, str, my_getnbr2(str))) == NULL)
+	return (NULL);
     }
   close(fd);
   return (map);
 }
 
-void		createMap(int ac, char **av)
+int		createMap(int ac, char **av)
 {
   int		fd;
   char		buff[396];
@@ -88,12 +105,17 @@ void		createMap(int ac, char **av)
   navy->map2 = my_strToWordTab2(buff, '\n');
   close(fd);
   if (ac == 2)
-    navy->map1 = putBoats(ac, av, navy->map1);
+    {
+      if ((navy->map1 = putBoats(ac, av, navy->map1)) == NULL)
+	return (1);
+    }
   else
-    navy->map2 = putBoats(ac, av, navy->map2);
-
-
-  int   j = 0;
+    {
+      if ((navy->map2 = putBoats(ac, av, navy->map2)) == NULL)
+	return (1);
+    }
+  int	j = 0;
   while (j < 25)
     my_putstr(navy->map1[j++]);
+  return (0);
 }

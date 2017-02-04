@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:23:37 2017 Louis HATTE
-** Last update Fri Feb  3 10:25:28 2017 Louis HATTE
+** Last update Sat Feb  4 10:14:31 2017 Louis HATTE
 */
 
 #include "include/my.h"
@@ -40,6 +40,7 @@ int	errorLength(int ac, char **av)
 int	characters(char c)
 {
   if ((c >= 'A' && c <= 'H') ||
+      (c >= 'a' && c <= 'h') ||
       (c >= '1' && c <= '8') ||
       (c == ':') || (c == '\n'))
     return (1);
