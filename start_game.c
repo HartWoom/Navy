@@ -1,113 +1,160 @@
-/*
-** start_game.c for  in /home/louis.hatte/PSU_2016_navy
-** 
-** Made by Louis HATTE
-** Login   <louis.hatte@epitech.net>
-** 
-** Started on  Sat Feb  4 14:41:28 2017 Louis HATTE
-** Last update Sat Feb  4 14:41:36 2017 Louis HATTE
-*/
-
 #include "include/my.h"
-#include "include/global.h"
 
-void	host_order(int sig)//, siginfo_t *info, void *context)
+int	my_glob = 0;
+
+void	order(int sig, siginfo_t *info, void *context)
 {
-  if (sig == SIGUSR1)
+  static int	flag = 0;
+
+  if (flag == 0)
     {
-      my_glob.usr1++;
+      my_glob = info->si_pid;
+      flag = 1;
     }
-  if (sig == SIGUSR2)
-    {
-      my_glob.usr2++;
-    }
+  else if (sig == SIGUSR1 && flag == 1)
+    my_glob = 1;
+  else if (sig == SIGUSR2 && flag == 1)
+    my_glob = 2;
 }
 
-void	client_order(int sig)//, siginfo_t *info, void *context)
+int		host_part2(t_navy *navy)
 {
-  if (sig == SIGUSR1)
+  static int	flag = 0;
+  static int	usr1 = 0;
+
+  if (my_glob == 1)
+    usr1++;
+  if (my_glob == 2)
     {
-      my_glob.usr1++;
+      flag++;
+      if (flag == 1)
+	{
+	  navy->coords[0] = navy->key[usr1];
+	  usr1 = 0;
+	}
+      if (flag == 2)
+	{
+	  navy->coords[1] = navy->key[usr1];
+	  tell_if_hit_or_not(navy, 2);
+	  flag = update_map(navy, 1);
+	  if (flag == 10 || flag == 20)
+	    return (flag);
+	  attack(navy->other_pid,  navy);
+	  usr1 = 0;
+	  return (flag);
+	}
     }
-  if (sig == SIGUSR2)
-    {
-      my_glob.usr2++;
-    }
+  return (1);
 }
 
-void			host(char *key)
+int			host(int ac, char **av, t_navy *navy)
 {
   struct sigaction	act;
-  char			*coords;
+  int			no_disp;
 
-  my_putstr("my_pid:  ");
-  my_put_nbr(getpid());
-  my_putstr("\nwaiting for ennemy connection...\n");
+  no_disp = 0;
+  my_putn("my_pid:  ", getpid());
+  my_putstr("waiting for enemy connexion...\n");
   act.sa_flags = SA_SIGINFO;
-  act.sa_sigaction = host_order;
-  if (sigaction(SIGUSR1, &act, NULL) < 0)
-    return;
-  if (sigaction(SIGUSR2, &act, NULL) < 0)
-    return;
+  act.sa_sigaction = order;
+  sigaction(SIGUSR1, &act, NULL);
+  sigaction(SIGUSR2, &act, NULL);
+  pause();
+  if (set_navy(navy) == -1)
+    return (84);
+  navy->other_pid = my_glob;
+  host_first_round(ac, av, navy);
   while (1)
     {
-      usleep(10000);
-      //      printf("pid: %i usr1: %i usr2: %i\n", getpid(), my_glob.usr1, my_glob.usr2);
-      if (my_glob.usr2 == 1 && my_glob.usr1 <= 15)
-	{
-	  my_putchar(key[my_glob.usr1]);
-	  my_glob.usr1 = 0;
-	  my_glob.usr2 = 0;
-	}
-      else if (my_glob.usr2 == 1 && my_glob.usr1 == 9)
-	{
-	  my_glob.usr1 = 0;
-	  my_glob.usr2 = 0;
-	  my_putstr("enemy connected\n");
-	}
+      if (no_disp == 0)
+	my_putstr("\nwaiting for enemy's attack...\n");
+      no_disp = 1;
+      pause();
+      no_disp = host_part2(navy);
+      if (no_disp == 10 || no_disp == 20)
+	return (no_disp);
     }
+  return (0);
 }
 
-void			client(char *pid, char *key)
+int		client_part2(t_navy *navy)
+{
+  static int    flag = 0;
+  static int    usr1 = 0;
+
+  if (my_glob == 1)
+    usr1++;
+  if (my_glob == 2)
+    {
+      flag++;
+      if (flag == 1)
+        {
+          navy->coords[0] = navy->key[usr1];
+          usr1 = 0;
+        }
+      if (flag == 2)
+        {
+          navy->coords[1] = navy->key[usr1];
+          tell_if_hit_or_not(navy, 1);
+          attack(navy->other_pid,  navy);
+	  flag = update_map(navy, 2);
+          usr1 = 0;
+          return (flag);
+        }
+    }
+  return (1);
+}
+
+int			client(int pid, int ac, char **av, t_navy *navy)
 {
   struct sigaction	act;
-  char			*coords;
-  int			i;
+  int			no_disp;
 
-  my_putstr("my_pid:  ");
-  my_put_nbr(getpid());
+  no_disp = 0;
   act.sa_flags = SA_SIGINFO;
-  act.sa_sigaction = client_order;
-  while (++i != 10)
+  act.sa_sigaction = order;
+  if (send_confirm(pid, navy) == -1)
+    return (84);
+  if (set_navy(navy) == -1)
+    return (84);
+  createMap(ac, av, navy);
+  sigaction(SIGUSR1, &act, NULL);
+  sigaction(SIGUSR2, &act, NULL);
+  pause();
+  while (1)
     {
-      if (kill(my_getnbr(pid), SIGUSR1) == -1)
-	return;
-      usleep(10000);
+      if (no_disp == 0)
+	my_putstr("\nwaiting for enemy's attack...\n");
+      no_disp = 1;
+      pause();
+      no_disp = client_part2(navy);
+      if (no_disp == 10 || no_disp == 20)
+	return (no_disp);
     }
-  kill(my_getnbr(pid), SIGUSR2);
-  my_putstr("\nsuccessfully connected\n");
-  if (sigaction(SIGUSR1, &act, NULL) < 0)
-    return;
-  if (sigaction(SIGUSR2, &act, NULL) < 0)
-    return;
-  my_putstr("\nattack: ");
-  while ((coords = get_next_line(0)))
-    {
-      encryption(pid, coords);
-      my_putstr("\nattack: ");
-    }
+  return (0);
 }
 
-int	start_game(int ac, char **av)
+int	start_game(int ac, char **av, t_navy *navy)
 {
-  char	*key;
-
-  if ((key = malloc(sizeof(char) * 17)) == NULL)
-    return (-1);
-  key = "ABCDEFGH12345678";
   if (ac == 2)
-    host(key);
+    {
+      if (host(ac, av, navy) == 20)
+	{
+	  my_putstr("\nI won\n");
+	  return (0);
+	}
+      my_putstr("\nEnemy won\n");
+      return (1);
+    }
   else if (ac == 3)
-    client(av[1], key);
+    {
+      if (client(my_getnbr(av[1]), ac, av, navy) == 20)
+	{
+	  my_putstr("\nI won\n");
+	  return (0);
+	}
+      my_putstr("\nEnemy won\n");
+      return (1);
+    }
   return (0);
 }

@@ -5,23 +5,32 @@
 ## Login   <antoine.hartwig@epitech.net>
 ## 
 ## Started on  Sat Oct 15 17:49:46 2016 Antoine Hartwig
-## Last update Fri Feb  3 15:09:39 2017 Antoine Hartwig
+## Last update Sat Feb 11 10:22:01 2017 Antoine Hartwig
 ##
 
 SRC	= main.c \
 	  help.c \
+	  start_game.c \
+	  send_confirm.c \
+	  encryption.c \
+	  set_navy.c \
+	  attack.c \
+	  host_first_round.c \
+	  updating_map.c \
+	  my_strtowordtab2.c \
+	  createMap.c \
 	  errorMap.c \
 	  errorMap2.c \
-	  encryption.c \
-	  start_game.c \
-	  my_strtowordtab2.c \
-	  createMap.c
+	  my_put.c \
+	  ping.c \
+	  my_simple_swap.c \
+	  display_map.c
 
 CC	= gcc
 
 OBJ	= $(SRC:.c=.o)
 
-CFLAGS	= -Iinclude/ -W -Wall -Wextra -pedantic -g3
+CFLAGS	= -Iinclude/ -W -Wall -Wextra -pedantic
 
 NAME	= navy
 

@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 08:30:05 2017 Louis HATTE
-** Last update Sat Feb  4 14:39:24 2017 Louis HATTE
+** Last update Fri Feb 10 14:47:50 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
@@ -22,24 +22,34 @@ char    *my_swap(char *str, int a, int b)
 
 int	errorInput(int ac, char **av)
 {
+  int	fd;
+
   if (ac != 2 && ac != 3)
     return (1);
   if (ac == 2)
     {
       if (!(my_strcomp(av[1], "-h", 0, my_strlen(av[1]))) &&
-	  open(av[1], O_RDONLY) == -1)
-	return (1);
+	  (fd = open(av[1], O_RDONLY)) == -1)
+	{
+	  close(fd);
+	  return (1);
+	}
     }
   else
-    {
-      if (open(av[2], O_RDONLY) == -1) //Condition pour un PID existant
+    if ((fd = open(av[2], O_RDONLY)) == -1)
+      {
+	close(fd);
 	return (1);
-    }
+      }
   return (0);
 }
 
-int	main(int ac, char **av)
+int		main(int ac, char **av)
 {
+  t_navy	*navy;
+
+  if ((navy = malloc(sizeof(t_navy))) == NULL)
+    return (84);
   if (errorInput(ac, av))
     return (84);
   if (my_strcomp(av[1], "-h", 0, my_strlen(av[1])))
@@ -47,9 +57,7 @@ int	main(int ac, char **av)
       hDisplay();
       return (0);
     }
-  if (errorMap(ac, av) || createMap(ac, av))
+  if (errorMap(ac, av))
     return (84);
-  if (start_game(ac, av) == -1)
-    return (84);
-  return (0);
+  return (start_game(ac, av, navy));
 }

@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb  2 13:37:17 2017 Louis HATTE
-** Last update Sat Feb  4 14:39:28 2017 Louis HATTE
+** Last update Sun Feb  5 10:19:04 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
@@ -92,13 +92,11 @@ char	**putBoats(int ac, char **av, char **map)
   return (map);
 }
 
-int		createMap(int ac, char **av)
+int		createMap(int ac, char **av, t_navy *navy)
 {
   int		fd;
   char		buff[396];
-  t_navy	*navy;
 
-  navy = malloc(sizeof(t_navy));
   fd = open("map", O_RDONLY);
   read(fd, buff, 396);
   navy->map1 = my_strToWordTab2(buff, '\n');
@@ -108,14 +106,17 @@ int		createMap(int ac, char **av)
     {
       if ((navy->map1 = putBoats(ac, av, navy->map1)) == NULL)
 	return (1);
+      int	j = 0;
+      while (j < 23)
+	my_putstr(navy->map1[j++]);
     }
   else
     {
       if ((navy->map2 = putBoats(ac, av, navy->map2)) == NULL)
 	return (1);
+      int	j = 0;
+      while (j < 23)
+	my_putstr(navy->map2[j++]);
     }
-  int	j = 0;
-  while (j < 25)
-    my_putstr(navy->map1[j++]);
   return (0);
 }
