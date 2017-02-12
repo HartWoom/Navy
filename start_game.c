@@ -1,3 +1,4 @@
+#include <ucontext.h>
 #include "include/my.h"
 
 int	my_glob = 0;
@@ -6,6 +7,8 @@ void	order(int sig, siginfo_t *info, void *context)
 {
   static int	flag = 0;
 
+  context = malloc(sizeof(ucontext_t));
+  getcontext(context);
   if (flag == 0)
     {
       my_glob = info->si_pid;
