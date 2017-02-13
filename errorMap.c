@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:23:37 2017 Louis HATTE
-** Last update Fri Feb  3 15:29:53 2017 Antoine Hartwig
+** Last update Mon Feb 13 09:37:24 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
@@ -76,7 +76,7 @@ int	chooseAv(int ac, char **av)
   return (fd);
 }
 
-int		errorMap(int ac, char **av)
+int	errorMap(int ac, char **av)
 {
   if (errorLines(ac, av)
       || errorLength(ac, av)
