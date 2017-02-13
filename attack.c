@@ -77,9 +77,10 @@ void	attack(int pid, t_navy *navy)
       if (encryption(navy, pid, coords) == 1)
 	{
 	  my_putstr("wrong position");
-	  attack(pid, navy);
+	  my_putstr("\nattack: ");
 	}
-      break;
+      else
+	break;
     }
   navy->sent = coords;
   while (1)
