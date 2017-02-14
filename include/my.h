@@ -5,14 +5,14 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:51:38 2017 Louis HATTE
-** Last update Fri Feb 10 15:49:27 2017 Antoine Hartwig
+** Last update Tue Feb 14 09:42:12 2017 Antoine Hartwig
 */
 
 #ifndef MY_H_
 # define MY_H_
 
 # ifndef READ_SIZE
-#  define READ_SIZE 42
+#  define READ_SIZE 31
 # endif /* !READ_SIZE */
 
 #include <sys/types.h>
@@ -90,5 +90,6 @@ int	update_map(t_navy *, int);
 int	send_confirm(int, t_navy *);
 void	simple_ping(int);
 void	double_ping(int);
+char	*my_strcapitalize(char *);
 
 #endif /* !MY_H_ */

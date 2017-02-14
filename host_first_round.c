@@ -11,13 +11,13 @@ int	host_first_round_part2(t_navy *navy)
     usr1++;
   if (my_glob == 2 && usr1 == 1)
     {
-      my_puts(navy->sent, ": hit");
+      my_puts(my_strcapitalize(navy->sent), ": hit\n");
       navy->ships++;
       return (1);
     }
   if (my_glob == 2 && usr1 == 2)
     {
-      my_puts(navy->sent, ": missed");
+      my_puts(my_strcapitalize(navy->sent), ": missed\n");
       return (1);
     }
   return (0);
@@ -25,7 +25,6 @@ int	host_first_round_part2(t_navy *navy)
 
 void	host_first_round(int ac, char **av, t_navy *navy)
 {
-  char	*coords;
   int	flag;
 
   flag = 0;
@@ -35,9 +34,9 @@ void	host_first_round(int ac, char **av, t_navy *navy)
   usleep(15000);
   kill(navy->other_pid, SIGUSR1);
   usleep(8000);
-  while ((coords = get_next_line(0)))
+  while ((navy->sent = get_next_line(0)))
     {
-      if (encryption(navy, navy->other_pid, coords) == 1)
+      if (encryption(navy, navy->other_pid, navy->sent) == 1)
 	{
 	  my_putstr("wrong position");
 	  attack(navy->other_pid, navy);
@@ -46,12 +45,7 @@ void	host_first_round(int ac, char **av, t_navy *navy)
       break;
     }
   if (flag == 0)
-    {
-      navy->sent = coords;
-      while (1)
-	{
-	  if (host_first_round_part2(navy) == 1)
-	    break;
-	}
-    }
+    while (1)
+      if (host_first_round_part2(navy) == 1)
+	break;
 }

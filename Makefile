@@ -5,11 +5,12 @@
 ## Login   <antoine.hartwig@epitech.net>
 ## 
 ## Started on  Sat Oct 15 17:49:46 2016 Antoine Hartwig
-## Last update Sat Feb 11 10:22:01 2017 Antoine Hartwig
+## Last update Tue Feb 14 09:41:47 2017 Antoine Hartwig
 ##
 
 SRC	= main.c \
 	  help.c \
+	  useful_fonctions.c \
 	  start_game.c \
 	  send_confirm.c \
 	  encryption.c \
@@ -21,10 +22,7 @@ SRC	= main.c \
 	  createMap.c \
 	  errorMap.c \
 	  errorMap2.c \
-	  my_put.c \
-	  ping.c \
-	  my_simple_swap.c \
-	  display_map.c
+	  my_put.c
 
 CC	= gcc
 

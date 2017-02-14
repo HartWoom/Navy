@@ -36,6 +36,7 @@ void	tell_if_hit_or_not_from2(t_navy *navy)
       my_puts(navy->coords, ": missed");
       double_ping(navy->other_pid);
     }
+  my_putchar('\n');
 }
 
 void	tell_if_hit_or_not(t_navy *navy, int from)
@@ -82,7 +83,7 @@ void	attack(int pid, t_navy *navy)
       else
 	break;
     }
-  navy->sent = coords;
+  navy->sent = my_strcapitalize(coords);
   while (1)
     {
       pause();
@@ -91,4 +92,5 @@ void	attack(int pid, t_navy *navy)
       if (attack_condition(navy, usr1) == 1)
   	break;
     }
+  my_putchar('\n');
 }
