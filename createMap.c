@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb  2 13:37:17 2017 Louis HATTE
-** Last update Sun Feb  5 10:19:04 2017 Antoine Hartwig
+** Last update Thu Feb 16 12:24:05 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
@@ -106,17 +106,13 @@ int		createMap(int ac, char **av, t_navy *navy)
     {
       if ((navy->map1 = putBoats(ac, av, navy->map1)) == NULL)
 	return (1);
-      int	j = 0;
-      while (j < 23)
-	my_putstr(navy->map1[j++]);
+      display_map(navy, 1);
     }
   else
     {
       if ((navy->map2 = putBoats(ac, av, navy->map2)) == NULL)
 	return (1);
-      int	j = 0;
-      while (j < 23)
-	my_putstr(navy->map2[j++]);
+      display_map(navy, 2);
     }
   return (0);
 }

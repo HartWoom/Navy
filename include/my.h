@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:51:38 2017 Louis HATTE
-** Last update Thu Feb 16 13:58:16 2017 Louis HATTE
+** Last update Thu Feb 16 15:04:53 2017 Antoine Hartwig
 */
 
 #ifndef MY_H_
@@ -17,6 +17,7 @@
 
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <ucontext.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
