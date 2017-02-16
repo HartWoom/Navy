@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb 16 14:00:41 2017 Louis HATTE
-** Last update Thu Feb 16 15:04:45 2017 Antoine Hartwig
+** Last update Thu Feb 16 15:26:03 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
@@ -40,10 +40,7 @@ int		host_part2(t_navy *navy)
     {
       flag++;
       if (flag == 1)
-	{
-	  navy->coords[0] = navy->key[usr1];
-	  usr1 = 0;
-	}
+	navy->coords[0] = navy->key[usr1];
       if (flag == 2)
 	{
 	  navy->coords[1] = navy->key[usr1];
@@ -52,9 +49,9 @@ int		host_part2(t_navy *navy)
 	  if (flag == 10 || flag == 20)
 	    return (flag);
 	  attack(navy->other_pid,  navy);
-	  usr1 = 0;
 	  return (flag);
 	}
+      usr1 = 0;
     }
   return (1);
 }
@@ -74,7 +71,6 @@ int			host(int ac, char **av, t_navy *navy)
   pause();
   if (set_navy(navy) == -1)
     return (84);
-  navy->other_pid = my_glob;
   host_first_round(ac, av, navy);
   while (1)
     {
@@ -100,19 +96,16 @@ int		client_part2(t_navy *navy)
     {
       flag++;
       if (flag == 1)
-        {
-          navy->coords[0] = navy->key[usr1];
-          usr1 = 0;
-        }
+	navy->coords[0] = navy->key[usr1];
       if (flag == 2)
         {
           navy->coords[1] = navy->key[usr1];
           tell_if_hit_or_not(navy, 1);
           attack(navy->other_pid,  navy);
 	  flag = update_map(navy, 2);
-          usr1 = 0;
           return (flag);
         }
+      usr1 = 0;
     }
   return (1);
 }
@@ -146,27 +139,27 @@ int			client(int pid, int ac, char **av, t_navy *navy)
   return (0);
 }
 
-int	start_game(int ac, char **av, t_navy *navy)
-{
-  if (ac == 2)
-    {
-      if (host(ac, av, navy) == 20)
-	{
-	  my_putstr("\nI won\n");
-	  return (0);
-	}
-      my_putstr("\nEnemy won\n");
-      return (1);
-    }
-  else if (ac == 3)
-    {
-      if (client(my_getnbr(av[1]), ac, av, navy) == 20)
-	{
-	  my_putstr("\nI won\n");
-	  return (0);
-	}
-      my_putstr("\nEnemy won\n");
-      return (1);
-    }
-  return (0);
-}
+/* int	start_game(int ac, char **av, t_navy *navy) */
+/* { */
+/*   if (ac == 2) */
+/*     { */
+/*       if (host(ac, av, navy) == 20) */
+/* 	{ */
+/* 	  my_putstr("\nI won\n"); */
+/* 	  return (0); */
+/* 	} */
+/*       my_putstr("\nEnemy won\n"); */
+/*       return (1); */
+/*     } */
+/*   else if (ac == 3) */
+/*     { */
+/*       if (client(my_getnbr(av[1]), ac, av, navy) == 20) */
+/* 	{ */
+/* 	  my_putstr("\nI won\n"); */
+/* 	  return (0); */
+/* 	} */
+/*       my_putstr("\nEnemy won\n"); */
+/*       return (1); */
+/*     } */
+/*   return (0); */
+/* } */

@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb 16 13:59:11 2017 Louis HATTE
-** Last update Thu Feb 16 13:59:12 2017 Louis HATTE
+** Last update Thu Feb 16 15:15:14 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
@@ -14,16 +14,16 @@ int	my_glob;
 
 void	tell_if_hit_or_not_from1(t_navy *navy)
 {
-  if (navy->map2[navy->coords[1] - 49 + 3][((navy->coords[0] - 65) * 2) + 2] >= '2'
-      && navy->map2[navy->coords[1] - 49 + 3][((navy->coords[0] - 65) * 2) + 2] <= '5')
+  if (navy->map2[COORDS1][COORDS0] >= '2'
+      && navy->map2[COORDS1][COORDS0] <= '5')
     {
       my_puts(navy->coords, ":  hit");
       navy->ships_sunk++;
       simple_ping(navy->other_pid);
     }
-  else if (navy->map2[navy->coords[1] - 49 + 3][((navy->coords[0] - 65) * 2) + 2] == '.'
-	   || navy->map2[navy->coords[1] - 49 + 3][((navy->coords[0] - 65) * 2) + 2] == 'o'
-	   || navy->map2[navy->coords[1] - 49 + 3][((navy->coords[0] - 65) * 2) + 2] == 'x')
+  else if (navy->map2[COORDS1][COORDS0] == '.'
+	   || navy->map2[COORDS1][COORDS0] == 'o'
+	   || navy->map2[COORDS1][COORDS0] == 'x')
     {
       my_puts(navy->coords, ": missed");
       double_ping(navy->other_pid);
@@ -32,16 +32,16 @@ void	tell_if_hit_or_not_from1(t_navy *navy)
 
 void	tell_if_hit_or_not_from2(t_navy *navy)
 {
-  if (navy->map1[navy->coords[1] - 49 + 3][((navy->coords[0] - 65) * 2) + 2] >= '2'
-      && navy->map1[navy->coords[1] - 49 + 3][((navy->coords[0] - 65) * 2) + 2] <= '5')
+  if (navy->map1[COORDS1][COORDS0] >= '2'
+      && navy->map1[COORDS1][COORDS0] <= '5')
     {
       my_puts(navy->coords, ":  hit");
       navy->ships_sunk++;
       simple_ping(navy->other_pid);
     }
-  else if (navy->map1[navy->coords[1] - 49 + 3][((navy->coords[0] - 65) * 2) + 2] == '.'
-	   || navy->map1[navy->coords[1] - 49 + 3][((navy->coords[0] - 65) * 2) + 2] == 'o'
-	   || navy->map1[navy->coords[1] - 49 + 3][((navy->coords[0] - 65) * 2) + 2] == 'x')
+  else if (navy->map1[COORDS1][COORDS0] == '.'
+	   || navy->map1[COORDS1][COORDS0] == 'o'
+	   || navy->map1[COORDS1][COORDS0] == 'x')
     {
       my_puts(navy->coords, ": missed");
       double_ping(navy->other_pid);

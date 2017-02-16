@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb 16 13:59:54 2017 Louis HATTE
-** Last update Thu Feb 16 13:59:55 2017 Louis HATTE
+** Last update Thu Feb 16 15:22:52 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
@@ -21,13 +21,13 @@ int	host_first_round_part2(t_navy *navy)
     usr1++;
   if (my_glob == 2 && usr1 == 1)
     {
-      my_puts(my_strcapitalize(navy->sent), ": hit\n");
+      my_puts(my_strcapitalize(navy->sent), ": hit");
       navy->ships++;
       return (1);
     }
   if (my_glob == 2 && usr1 == 2)
     {
-      my_puts(my_strcapitalize(navy->sent), ": missed\n");
+      my_puts(my_strcapitalize(navy->sent), ": missed");
       return (1);
     }
   return (0);
@@ -37,6 +37,7 @@ void	host_first_round(int ac, char **av, t_navy *navy)
 {
   int	flag;
 
+  navy->other_pid = my_glob;
   flag = 0;
   my_putstr("enemy connected\n\n");
   createMap(ac, av, navy);

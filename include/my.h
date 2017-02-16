@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:51:38 2017 Louis HATTE
-** Last update Thu Feb 16 15:04:53 2017 Antoine Hartwig
+** Last update Thu Feb 16 15:28:03 2017 Antoine Hartwig
 */
 
 #ifndef MY_H_
@@ -23,6 +23,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <signal.h>
+
+#define COORDS0 ((navy->coords[0] - 65) * 2) + 2
+#define COORDS1 navy->coords[1] - 49 + 3
 
 typedef struct	s_coords
 {
@@ -80,6 +83,8 @@ int	*my_columns2(char *, char, int);
 char	**my_strToWordTab2(char *, char);
 int	createMap(int, char **, t_navy *);
 int	start_game(int, char **, t_navy *);
+int	host(int, char **, t_navy *);
+int	client(int, int, char **, t_navy *);
 void	host_first_round(int, char **, t_navy *);
 void	attack(int, t_navy *);
 void	tell_if_hit_or_not(t_navy *, int);

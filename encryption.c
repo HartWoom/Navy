@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb 16 13:59:30 2017 Louis HATTE
-** Last update Thu Feb 16 13:59:31 2017 Louis HATTE
+** Last update Thu Feb 16 15:19:02 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
@@ -15,8 +15,10 @@ int	authorize_entry(char *cds)
   int	i;
 
   i = 0;
-  if (((cds[0] >= 'A' && cds[0] <= 'H') || (cds[0] >= 'a' && cds[0] <= 'h'))
-      && ((cds[1] >= 'A' && cds[1] <= 'H') || (cds[1] >= 'a' && cds[1] <= 'h')))
+  if (((cds[0] >= 'A' && cds[0] <= 'H')
+       || (cds[0] >= 'a' && cds[0] <= 'h'))
+      && ((cds[1] >= 'A' && cds[1] <= 'H')
+	  || (cds[1] >= 'a' && cds[1] <= 'h')))
     return (1);
   if ((cds[0] >= '1' && cds[0] <= '8') && (cds[1] >= '1' && cds[1] <= '8'))
     return (1);

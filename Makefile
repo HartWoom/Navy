@@ -5,13 +5,14 @@
 ## Login   <antoine.hartwig@epitech.net>
 ## 
 ## Started on  Sat Oct 15 17:49:46 2016 Antoine Hartwig
-## Last update Thu Feb 16 13:58:49 2017 Louis HATTE
+## Last update Thu Feb 16 15:28:18 2017 Antoine Hartwig
 ##
 
 SRC	= main.c \
 	  help.c \
 	  useful_fonctions.c \
 	  start_game.c \
+	  real_start.c \
 	  send_confirm.c \
 	  encryption.c \
 	  set_navy.c \
