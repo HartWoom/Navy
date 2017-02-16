@@ -1,3 +1,13 @@
+/*
+** real_start.c for  in /home/louis.hatte/PSU_2016_navy
+** 
+** Made by Louis HATTE
+** Login   <louis.hatte@epitech.net>
+** 
+** Started on  Thu Feb 16 16:58:20 2017 Louis HATTE
+** Last update Thu Feb 16 16:58:22 2017 Louis HATTE
+*/
+
 #include "include/my.h"
 
 int     start_game(int ac, char **av, t_navy *navy)
