@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:51:38 2017 Louis HATTE
-** Last update Tue Feb 14 09:42:12 2017 Antoine Hartwig
+** Last update Thu Feb 16 13:58:16 2017 Louis HATTE
 */
 
 #ifndef MY_H_

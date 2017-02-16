@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:23:37 2017 Louis HATTE
-** Last update Mon Feb 13 21:02:04 2017 Antoine Hartwig
+** Last update Thu Feb 16 13:54:49 2017 Louis HATTE
 */
 
 #include "include/my.h"
@@ -51,16 +51,19 @@ int	errorLines(int ac, char **av)
   char	buff[1];
   int	lines;
   int	fd;
+  int	count;
 
   lines = 0;
+  count = 0;
   fd = chooseAv(ac, av);
   while (read(fd, buff, 1) != 0 && characters(buff[0]))
     {
       if (buff[0] == '\n')
-	lines++;
+  	lines++;
+      count++;
     }
   close(fd);
-  if (!(characters(buff[0])) || lines != 4)
+  if ((lines != 4 && count != 31) || (lines != 3 && count != 32))
     return (1);
   return (0);
 }

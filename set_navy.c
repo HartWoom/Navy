@@ -1,3 +1,13 @@
+/*
+** set_navy.c for  in /home/louis.hatte/PSU_2016_navy
+** 
+** Made by Louis HATTE
+** Login   <louis.hatte@epitech.net>
+** 
+** Started on  Thu Feb 16 14:00:34 2017 Louis HATTE
+** Last update Thu Feb 16 14:00:35 2017 Louis HATTE
+*/
+
 #include "my.h"
 
 int	set_navy(t_navy *navy)

@@ -1,3 +1,13 @@
+/*
+** updating_map.c for  in /home/louis.hatte/PSU_2016_navy
+** 
+** Made by Louis HATTE
+** Login   <louis.hatte@epitech.net>
+** 
+** Started on  Thu Feb 16 14:00:50 2017 Louis HATTE
+** Last update Thu Feb 16 14:00:51 2017 Louis HATTE
+*/
+
 #include "include/my.h"
 
 int	my_glob;

@@ -1,3 +1,13 @@
+/*
+** useful_fonctions.c for  in /home/louis.hatte/PSU_2016_navy
+** 
+** Made by Louis HATTE
+** Login   <louis.hatte@epitech.net>
+** 
+** Started on  Thu Feb 16 14:00:57 2017 Louis HATTE
+** Last update Thu Feb 16 14:00:58 2017 Louis HATTE
+*/
+
 #include "include/my.h"
 
 void    display_map(t_navy *navy, int map)

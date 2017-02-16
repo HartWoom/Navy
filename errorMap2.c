@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 12:56:57 2017 Louis HATTE
-** Last update Fri Feb  3 15:28:59 2017 Antoine Hartwig
+** Last update Thu Feb 16 13:39:31 2017 Louis HATTE
 */
 
 #include "include/my.h"
@@ -69,7 +69,7 @@ int     my_getnbr2(char *str)
       op = -1;
       str++;
     }
-  while (*str != ':')
+  while (*str && *str != ':')
     {
       result = result * 10 + *str - 48;
       str++;

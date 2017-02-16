@@ -1,3 +1,13 @@
+/*
+** start_game.c for  in /home/louis.hatte/PSU_2016_navy
+** 
+** Made by Louis HATTE
+** Login   <louis.hatte@epitech.net>
+** 
+** Started on  Thu Feb 16 14:00:41 2017 Louis HATTE
+** Last update Thu Feb 16 14:00:42 2017 Louis HATTE
+*/
+
 #include <ucontext.h>
 #include "include/my.h"
 
