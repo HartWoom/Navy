@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb 16 14:00:41 2017 Louis HATTE
-** Last update Thu Feb 16 15:26:03 2017 Antoine Hartwig
+** Last update Thu Feb 16 15:35:09 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
@@ -16,7 +16,8 @@ void	order(int sig, siginfo_t *info, void *context)
 {
   static int	flag = 0;
 
-  context = malloc(sizeof(ucontext_t));
+  if (!(context = malloc(sizeof(ucontext_t))))
+    return;
   getcontext(context);
   if (flag == 0)
     {
@@ -138,28 +139,3 @@ int			client(int pid, int ac, char **av, t_navy *navy)
     }
   return (0);
 }
-
-/* int	start_game(int ac, char **av, t_navy *navy) */
-/* { */
-/*   if (ac == 2) */
-/*     { */
-/*       if (host(ac, av, navy) == 20) */
-/* 	{ */
-/* 	  my_putstr("\nI won\n"); */
-/* 	  return (0); */
-/* 	} */
-/*       my_putstr("\nEnemy won\n"); */
-/*       return (1); */
-/*     } */
-/*   else if (ac == 3) */
-/*     { */
-/*       if (client(my_getnbr(av[1]), ac, av, navy) == 20) */
-/* 	{ */
-/* 	  my_putstr("\nI won\n"); */
-/* 	  return (0); */
-/* 	} */
-/*       my_putstr("\nEnemy won\n"); */
-/*       return (1); */
-/*     } */
-/*   return (0); */
-/* } */
