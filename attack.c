@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb 16 13:59:11 2017 Louis HATTE
-** Last update Thu Feb 16 15:15:14 2017 Antoine Hartwig
+** Last update Fri Feb 17 12:07:28 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
@@ -46,7 +46,6 @@ void	tell_if_hit_or_not_from2(t_navy *navy)
       my_puts(navy->coords, ": missed");
       double_ping(navy->other_pid);
     }
-  my_putchar('\n');
 }
 
 void	tell_if_hit_or_not(t_navy *navy, int from)
@@ -102,5 +101,4 @@ void	attack(int pid, t_navy *navy)
       if (attack_condition(navy, usr1) == 1)
   	break;
     }
-  my_putchar('\n');
 }
