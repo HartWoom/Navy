@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb 16 13:59:54 2017 Louis HATTE
-** Last update Fri Feb 17 13:14:19 2017 Louis HATTE
+** Last update Fri Feb 17 13:37:06 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
@@ -21,13 +21,13 @@ int	host_first_round_part2(t_navy *navy)
     usr1++;
   if (my_glob == 2 && usr1 == 1)
     {
-      my_puts(my_strcapitalize(navy->sent), ": hit");
+      my_puts(my_strcapitalize(navy->sent), ": hit\n");
       navy->ships++;
       return (1);
     }
   if (my_glob == 2 && usr1 == 2)
     {
-      my_puts(my_strcapitalize(navy->sent), ": missed");
+      my_puts(my_strcapitalize(navy->sent), ": missed\n");
       return (1);
     }
   return (0);

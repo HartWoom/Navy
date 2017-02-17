@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:51:38 2017 Louis HATTE
-** Last update Fri Feb 17 13:15:36 2017 Louis HATTE
+** Last update Fri Feb 17 14:04:51 2017 Antoine Hartwig
 */
 
 #ifndef MY_H_
@@ -27,6 +27,8 @@
 
 #define COORDS0 ((navy->coords[0] - 65) * 2) + 2
 #define COORDS1 navy->coords[1] - 49 + 3
+#define SENT0 ((navy->sent[0] - 65) * 2) + 2
+#define SENT1 navy->sent[1] - 49 + 15
 
 typedef struct	s_error
 {
@@ -43,7 +45,6 @@ typedef struct  s_navy
   int	other_pid;
   int	ships_sunk;
   int	ships;
-  t_error	error;
 }       t_navy;
 
 void    my_putchar(char);
@@ -100,5 +101,6 @@ int	send_confirm(int, t_navy *);
 void	simple_ping(int);
 void	double_ping(int);
 char	*my_strcapitalize(char *);
+int	tell_victory_or_defeat(t_navy *, int);
 
 #endif /* !MY_H_ */

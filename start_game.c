@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb 16 14:00:41 2017 Louis HATTE
-** Last update Fri Feb 17 13:15:26 2017 Louis HATTE
+** Last update Fri Feb 17 13:58:08 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
@@ -46,10 +46,15 @@ int		host_part2(t_navy *navy)
 	{
 	  navy->coords[1] = navy->key[usr1];
 	  tell_if_hit_or_not(navy, 2);
+	  if (navy->ships == 3 || navy->ships_sunk == 3)
+	    return (tell_victory_or_defeat(navy, 1));
 	  flag = update_map(navy, 1);
+	  display_map(navy, 1);
 	  if (flag == 10 || flag == 20)
 	    return (flag);
-	  attack(navy->other_pid,  navy);
+	  attack(navy->other_pid, navy);
+	  if (navy->ships == 3 || navy->ships_sunk == 3)
+	    return (tell_victory_or_defeat(navy, 1));
 	  usr1 = 0;
 	  return (flag);
 	}
@@ -77,7 +82,7 @@ int			host(int ac, t_navy *navy, t_error *error)
   while (1)
     {
       if (no_disp == 0)
-	my_putstr("\nwaiting for enemy's attack...\n");
+	my_putstr("waiting for enemy's attack...\n");
       no_disp = 1;
       pause();
       no_disp = host_part2(navy);
@@ -103,8 +108,13 @@ int		client_part2(t_navy *navy)
         {
           navy->coords[1] = navy->key[usr1];
           tell_if_hit_or_not(navy, 1);
+	  my_putchar('W');
+	  if (navy->ships == 3 || navy->ships_sunk == 3)
+	    return (tell_victory_or_defeat(navy, 2));
+	  my_putchar('X');
           attack(navy->other_pid,  navy);
 	  flag = update_map(navy, 2);
+	  display_map(navy, 2);
 	  usr1 = 0;
           return (flag);
         }

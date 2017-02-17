@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb 16 14:00:50 2017 Louis HATTE
-** Last update Thu Feb 16 14:00:51 2017 Louis HATTE
+** Last update Fri Feb 17 14:06:18 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
@@ -21,11 +21,11 @@ void	Player1_part2(t_navy *navy, int x, int y)
     }
   else if (navy->map1[x][y] == '.'
            || navy->map1[x][y] == 'o' || navy->map1[x][y] == 'x')
-    if (navy->map1[x][y] == '.')
-      {
+    {
+      if (navy->map1[x][y] == '.')
         navy->map1[x][y] = 'o';
-        send_signal(navy->other_pid, 'o', navy->key);
-      }
+      send_signal(navy->other_pid, 'o', navy->key);
+    }
 }
 
 int	Player1(t_navy *navy, int x, int y, int usr1)
@@ -37,18 +37,15 @@ int	Player1(t_navy *navy, int x, int y, int usr1)
 	usr1++;
       if (my_glob == 2)
 	{
-	  navy->map1[navy->sent[1] - 49 + 15][((navy->sent[0] - 65) * 2) + 2]
-	    = navy->key[usr1];
+	  navy->map1[SENT1][SENT0] = navy->key[usr1];
 	  break;
 	}
     }
   usleep(10000);
   Player1_part2(navy, x, y);
-  my_putchar('\n');
-  display_map(navy, 1);
-  if (navy->ships_sunk == 14)
+  if (navy->ships_sunk == 3)
     return (10);
-  if (navy->ships == 14)
+  if (navy->ships == 3)
     return (20);
   return (0);
 }
@@ -62,8 +59,7 @@ void	Player2_part2(t_navy *navy, int usr1)
         usr1++;
       if (my_glob == 2)
         {
-          navy->map2[navy->sent[1] - 49 + 15][((navy->sent[0] - 65) * 2) + 2]
-            = navy->key[usr1];
+          navy->map2[SENT1][SENT0] = navy->key[usr1];
           break;
         }
     }
@@ -79,17 +75,15 @@ int	Player2(t_navy *navy, int x, int y, int usr1)
     }
   else if (navy->map2[x][y] == '.'
 	   || navy->map2[x][y] == 'o' || navy->map2[x][y] == 'x')
-    if (navy->map2[x][y] == '.')
-      {
+    {
+      if (navy->map2[x][y] == '.')
 	navy->map2[x][y] = 'o';
-	send_signal(navy->other_pid, 'o', navy->key);
-      }
+      send_signal(navy->other_pid, 'o', navy->key);
+    }
   Player2_part2(navy, usr1);
-  my_putchar('\n');
-  display_map(navy, 2);
-  if (navy->ships_sunk == 14)
+  if (navy->ships_sunk == 3)
     return (10);
-  if (navy->ships == 14)
+  if (navy->ships == 3)
     return (20);
   return (0);
 }

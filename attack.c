@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb 16 13:59:11 2017 Louis HATTE
-** Last update Fri Feb 17 12:07:28 2017 Antoine Hartwig
+** Last update Fri Feb 17 13:48:16 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
@@ -35,7 +35,7 @@ void	tell_if_hit_or_not_from2(t_navy *navy)
   if (navy->map1[COORDS1][COORDS0] >= '2'
       && navy->map1[COORDS1][COORDS0] <= '5')
     {
-      my_puts(navy->coords, ":  hit");
+      my_puts(navy->coords, ":  hit\n");
       navy->ships_sunk++;
       simple_ping(navy->other_pid);
     }
@@ -43,7 +43,7 @@ void	tell_if_hit_or_not_from2(t_navy *navy)
 	   || navy->map1[COORDS1][COORDS0] == 'o'
 	   || navy->map1[COORDS1][COORDS0] == 'x')
     {
-      my_puts(navy->coords, ": missed");
+      my_puts(navy->coords, ": missed\n");
       double_ping(navy->other_pid);
     }
 }
@@ -63,13 +63,13 @@ int	attack_condition(t_navy *navy, int usr1)
 {
   if (my_glob == 2 && usr1 == 1)
     {
-      my_puts(navy->sent, ": hit");
+      my_puts(navy->sent, ": hit\n");
       navy->ships++;
       return (1);
     }
   if (my_glob == 2 && usr1 == 2)
     {
-      my_puts(navy->sent, ": missed");
+      my_puts(navy->sent, ": missed\n");
       return (1);
     }
   return (0);

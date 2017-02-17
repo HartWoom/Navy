@@ -5,7 +5,7 @@
 ## Login   <antoine.hartwig@epitech.net>
 ## 
 ## Started on  Sat Oct 15 17:49:46 2016 Antoine Hartwig
-## Last update Fri Feb 17 11:28:12 2017 Louis HATTE
+## Last update Fri Feb 17 13:42:23 2017 Antoine Hartwig
 ##
 
 SRC	= main.c \
@@ -24,6 +24,7 @@ SRC	= main.c \
 	  errorMap.c \
 	  errorMap2.c \
 	  errorMap3.c \
+	  tell_victory_or_defeat.c \
 	  my_put.c
 
 CC	= gcc
