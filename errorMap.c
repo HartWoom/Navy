@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:23:37 2017 Louis HATTE
-** Last update Fri Feb 17 12:06:25 2017 Louis HATTE
+** Last update Fri Feb 17 13:10:58 2017 Louis HATTE
 */
 
 #include "include/my.h"
@@ -88,29 +88,28 @@ int	chooseAv(int ac, char **av)
   return (fd);
 }
 
-int		errorMap(int ac, char **av)
+int		errorMap(int ac, char **av, t_error *error)
 {
-  t_error	error;
   int		i;
 
   i = 0;
-  if (!(error.file = malloc(sizeof(char *) * 5)))
+  if (!(error->file = malloc(sizeof(char *) * 5)))
     return (1);
-  error.file[4] = NULL;
+  error->file[4] = NULL;
   while (i < 4)
     {
-      if (!(error.file[i] = malloc(sizeof(char) * 9)))
+      if (!(error->file[i] = malloc(sizeof(char) * 9)))
 	return (1);
-      error.file[i++][8] = '\0';
+      error->file[i++][8] = '\0';
     }
   if (errorLines(ac, av))
     return (1);
-  takeFile(ac, av, &error);
-  capitalizeFile(&error);
-  if (checkFile(&error) || checkFile2(&error) || errorLength(&error))
+  takeFile(ac, av, error);
+  capitalizeFile(error);
+  if (checkFile(error) || checkFile2(error) || errorLength(error))
     return (1);
-  cleanFile(&error);
-  if (checkBoat(&error) || checkBoat2(&error) || checkBoat3(&error))
+  cleanFile(error);
+  if (checkBoat(error) || checkBoat2(error) || checkBoat3(error))
     return (1);
   return (0);
 }

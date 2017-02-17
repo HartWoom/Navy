@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb  2 13:37:17 2017 Louis HATTE
-** Last update Thu Feb 16 12:24:05 2017 Antoine Hartwig
+** Last update Fri Feb 17 13:12:34 2017 Louis HATTE
 */
 
 #include "include/my.h"
@@ -64,35 +64,21 @@ char	**putBoat(char **map, char *str, int a)
   return (map);
 }
 
-char	**putBoats(int ac, char **av, char **map)
+char	**putBoats(char **map, t_error *error)
 {
-  char	*str;
-  int	i;
-  int	fd;
+  int	j;
 
-  fd = chooseAv(ac, av);
-  i = 0;
-  while  ((str = get_next_line(fd)))
+  while  (j < 4)
     {
-      while (str[i] != '\0')
-	{
-	  if (str[i] >= 'a' && str[i] <= 'h')
-	    str[i] = str[i] + 32;
-	  i++;
-	}
-      if (str[2] >= '0' && str[2] <= '9')
-	{
-	  str = my_swap(str, 2, 3);
-	  str = my_swap(str, 5, 6);
-	}
-      if ((map = putBoat(map, str, my_getnbr2(str))) == NULL)
+      if ((map = putBoat(map, error->file[j],
+			 my_getnbr2(error->file[j]))) == NULL)
 	return (NULL);
+      j++;
     }
-  close(fd);
   return (map);
 }
 
-int		createMap(int ac, char **av, t_navy *navy)
+int		createMap(int ac, t_navy *navy, t_error *error)
 {
   int		fd;
   char		buff[396];
@@ -104,13 +90,13 @@ int		createMap(int ac, char **av, t_navy *navy)
   close(fd);
   if (ac == 2)
     {
-      if ((navy->map1 = putBoats(ac, av, navy->map1)) == NULL)
+      if ((navy->map1 = putBoats(navy->map1, error)) == NULL)
 	return (1);
       display_map(navy, 1);
     }
   else
     {
-      if ((navy->map2 = putBoats(ac, av, navy->map2)) == NULL)
+      if ((navy->map2 = putBoats(navy->map2, error)) == NULL)
 	return (1);
       display_map(navy, 2);
     }

@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb 16 14:00:41 2017 Louis HATTE
-** Last update Fri Feb 17 11:50:51 2017 Antoine Hartwig
+** Last update Fri Feb 17 13:15:26 2017 Louis HATTE
 */
 
 #include "include/my.h"
@@ -58,7 +58,7 @@ int		host_part2(t_navy *navy)
   return (1);
 }
 
-int			host(int ac, char **av, t_navy *navy)
+int			host(int ac, t_navy *navy, t_error *error)
 {
   struct sigaction	act;
   int			no_disp;
@@ -73,7 +73,7 @@ int			host(int ac, char **av, t_navy *navy)
   pause();
   if (set_navy(navy) == -1)
     return (84);
-  host_first_round(ac, av, navy);
+  host_first_round(ac, navy, error);
   while (1)
     {
       if (no_disp == 0)
@@ -113,7 +113,7 @@ int		client_part2(t_navy *navy)
   return (1);
 }
 
-int			client(int pid, int ac, char **av, t_navy *navy)
+int			client(int ac, char **av, t_navy *navy, t_error *error)
 {
   struct sigaction	act;
   int			no_disp;
@@ -121,11 +121,11 @@ int			client(int pid, int ac, char **av, t_navy *navy)
   no_disp = 0;
   act.sa_flags = SA_SIGINFO;
   act.sa_sigaction = order;
-  if (send_confirm(pid, navy) == -1)
+  if (send_confirm(my_getnbr(av[1]), navy) == -1)
     return (84);
   if (set_navy(navy) == -1)
     return (84);
-  createMap(ac, av, navy);
+  createMap(ac, navy, error);
   sigaction(SIGUSR1, &act, NULL);
   sigaction(SIGUSR2, &act, NULL);
   pause();

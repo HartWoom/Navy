@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb 16 13:59:54 2017 Louis HATTE
-** Last update Thu Feb 16 15:22:52 2017 Antoine Hartwig
+** Last update Fri Feb 17 13:14:19 2017 Louis HATTE
 */
 
 #include "include/my.h"
@@ -33,14 +33,14 @@ int	host_first_round_part2(t_navy *navy)
   return (0);
 }
 
-void	host_first_round(int ac, char **av, t_navy *navy)
+void	host_first_round(int ac, t_navy *navy, t_error *error)
 {
   int	flag;
 
   navy->other_pid = my_glob;
   flag = 0;
   my_putstr("enemy connected\n\n");
-  createMap(ac, av, navy);
+  createMap(ac, navy, error);
   my_putstr("\nattack:  ");
   usleep(15000);
   kill(navy->other_pid, SIGUSR1);

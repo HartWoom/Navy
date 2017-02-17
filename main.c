@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 08:30:05 2017 Louis HATTE
-** Last update Fri Feb 10 14:47:50 2017 Antoine Hartwig
+** Last update Fri Feb 17 13:03:50 2017 Louis HATTE
 */
 
 #include "include/my.h"
@@ -47,6 +47,7 @@ int	errorInput(int ac, char **av)
 int		main(int ac, char **av)
 {
   t_navy	*navy;
+  t_error	error;
 
   if ((navy = malloc(sizeof(t_navy))) == NULL)
     return (84);
@@ -57,7 +58,7 @@ int		main(int ac, char **av)
       hDisplay();
       return (0);
     }
-  if (errorMap(ac, av))
+  if (errorMap(ac, av, &error))
     return (84);
-  return (start_game(ac, av, navy));
+  return (start_game(ac, av, navy, &error));
 }

@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:51:38 2017 Louis HATTE
-** Last update Fri Feb 17 12:12:58 2017 Antoine Hartwig
+** Last update Fri Feb 17 13:15:36 2017 Louis HATTE
 */
 
 #ifndef MY_H_
@@ -43,6 +43,7 @@ typedef struct  s_navy
   int	other_pid;
   int	ships_sunk;
   int	ships;
+  t_error	error;
 }       t_navy;
 
 void    my_putchar(char);
@@ -79,15 +80,15 @@ int	capitalizeFile(t_error *);
 int	takeFile(int, char **, t_error *);
 int	errorLines(int, char **);
 int	chooseAv(int, char **);
-int	errorMap(int, char **);
+int	errorMap(int, char **, t_error *);
 int	my_lines2(char *, char);
 int	*my_columns2(char *, char, int);
 char	**my_strToWordTab2(char *, char);
-int	createMap(int, char **, t_navy *);
-int	start_game(int, char **, t_navy *);
-int	host(int, char **, t_navy *);
-int	client(int, int, char **, t_navy *);
-void	host_first_round(int, char **, t_navy *);
+int	createMap(int, t_navy *, t_error *);
+int	start_game(int, char **, t_navy *, t_error *);
+int	host(int, t_navy *, t_error *);
+int	client(int, char **, t_navy *, t_error *);
+void	host_first_round(int, t_navy *, t_error *);
 void	attack(int, t_navy *);
 void	tell_if_hit_or_not(t_navy *, int);
 int	encryption(t_navy *, int, char *);

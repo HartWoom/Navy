@@ -5,16 +5,16 @@
 ** Login   <louis.hatte@epitech.net>
 **
 ** Started on  Thu Feb 16 16:58:20 2017 Louis HATTE
-** Last update Fri Feb 17 08:31:42 2017 Antoine Hartwig
+** Last update Fri Feb 17 13:16:02 2017 Louis HATTE
 */
 
 #include "include/my.h"
 
-int	start_game_part2(int ac, char **av, t_navy *navy)
+int	start_game_part2(int ac, char **av, t_navy *navy, t_error *error)
 {
   int	_return;
 
-  if ((_return = client(my_getnbr(av[1]), ac, av, navy)) == 20)
+  if ((_return = client(ac, av, navy, error)) == 20)
     {
       my_putstr("\nI won\n");
       return (0);
@@ -26,13 +26,13 @@ int	start_game_part2(int ac, char **av, t_navy *navy)
   return (1);
 }
 
-int     start_game(int ac, char **av, t_navy *navy)
+int     start_game(int ac, char **av, t_navy *navy, t_error *error)
 {
   int	_return;
 
   if (ac == 2)
     {
-      if ((_return = host(ac, av, navy)) == 20)
+      if ((_return = host(ac, navy, error)) == 20)
         {
           my_putstr("\nI won\n");
           return (0);
@@ -44,6 +44,6 @@ int     start_game(int ac, char **av, t_navy *navy)
       return (1);
     }
   else if (ac == 3)
-    return (start_game_part2(ac, av, navy));
+    return (start_game_part2(ac, av, navy, error));
   return (0);
 }

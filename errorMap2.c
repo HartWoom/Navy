@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Fri Feb 17 11:25:25 2017 Louis HATTE
-** Last update Fri Feb 17 11:26:24 2017 Louis HATTE
+** Last update Fri Feb 17 12:50:58 2017 Louis HATTE
 */
 
 #include "include/my.h"
@@ -101,7 +101,7 @@ int     checkFile(t_error *error)
   j = 0;
   while (j < 4)
     {
-      if ((error->file[j][1] != ':') || (error->file[j][4] =! ':') ||
+      if ((error->file[j][1] != ':') || (error->file[j][4] != ':') ||
 	  (error->file[j][0] < '2' || error->file[j][0] > '5') ||
 	  (error->file[j][7] != '\n'))
 	return (1);
