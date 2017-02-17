@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:23:37 2017 Louis HATTE
-** Last update Fri Feb 17 11:27:54 2017 Louis HATTE
+** Last update Fri Feb 17 12:06:25 2017 Louis HATTE
 */
 
 #include "include/my.h"
@@ -71,9 +71,10 @@ int	errorLines(int ac, char **av)
       count++;
     }
   close(fd);
-  if ((lines != 4 && count != 31) || (lines != 3 && count != 32))
-    return (1);
-  return (0);
+  if ((lines == 3 && count == 31) ||
+      (lines == 4 && count == 32 && buff[0] == '\n'))
+    return (0);
+  return (1);
 }
 
 int	chooseAv(int ac, char **av)
