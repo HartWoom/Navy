@@ -5,10 +5,10 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb 16 14:00:34 2017 Louis HATTE
-** Last update Thu Feb 16 14:00:35 2017 Louis HATTE
+** Last update Fri Feb 17 11:37:52 2017 Louis HATTE
 */
 
-#include "my.h"
+#include "include/my.h"
 
 int	set_navy(t_navy *navy)
 {

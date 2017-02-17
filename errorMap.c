@@ -5,44 +5,52 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:23:37 2017 Louis HATTE
-** Last update Thu Feb 16 16:29:38 2017 Antoine Hartwig
+** Last update Fri Feb 17 11:27:54 2017 Louis HATTE
 */
 
 #include "include/my.h"
 
-int	errorLength(int ac, char **av)
+int	capitalizeFile(t_error *error)
 {
-  int	fd;
-  int	*length;
-  char	*line;
-  int	a;
   int	i;
+  int	j;
 
-  fd = chooseAv(ac, av);
-  if ((length = lengthTabler()) == NULL)
-    return (1);
-  i = 0;
-  a = 0;
-  while ((line = get_next_line(fd)))
+  i = (j = 0);
+  while (j < 4)
     {
-      a = my_getnbr2(line);
-      while (a != length[i] && ++i < 4);
-      if (a == length[i])
-	length[i] = 1;
+      while (error->file[j][i] != '\0')
+	{
+	  if (error->file[j][i] >= 'a' && error->file[j][i] <= 'z')
+	    error->file[j][i] = error->file[j][i] - 32;
+	  i++;
+	}
       i = 0;
+      j++;
     }
-  while (length[i++] == 1);
-  if (i != 5)
-    return (1);
   return (0);
 }
 
-int	characters(char c)
+int	takeFile(int ac, char **av, t_error *error)
 {
-  if ((c >= 'A' && c <= 'H') ||
-      (c >= '1' && c <= '8') ||
-      (c == ':') || (c == '\n'))
-    return (1);
+  char	*str;
+  int	fd;
+  int	i;
+  int	j;
+
+  i = 0;
+  j = 0;
+  fd = chooseAv(ac, av);
+  while ((str = get_next_line(fd)))
+    {
+      while (str[i] != '\0')
+	{
+	  error->file[j][i] = str[i];
+	  i++;
+	}
+      error->file[j][i] = '\n';
+      i = 0;
+      j++;
+    }
   return (0);
 }
 
@@ -56,7 +64,7 @@ int	errorLines(int ac, char **av)
   lines = 0;
   count = 0;
   fd = chooseAv(ac, av);
-  while (read(fd, buff, 1) != 0 && characters(buff[0]))
+  while (read(fd, buff, 1) != 0)
     {
       if (buff[0] == '\n')
   	lines++;
@@ -79,11 +87,29 @@ int	chooseAv(int ac, char **av)
   return (fd);
 }
 
-int	errorMap(int ac, char **av)
+int		errorMap(int ac, char **av)
 {
-  if (errorLines(ac, av)
-      || errorLength(ac, av)
-      || check_coords(chooseAv(ac, av)) == -1)
+  t_error	error;
+  int		i;
+
+  i = 0;
+  if (!(error.file = malloc(sizeof(char *) * 5)))
+    return (1);
+  error.file[4] = NULL;
+  while (i < 4)
+    {
+      if (!(error.file[i] = malloc(sizeof(char) * 9)))
+	return (1);
+      error.file[i++][8] = '\0';
+    }
+  if (errorLines(ac, av))
+    return (1);
+  takeFile(ac, av, &error);
+  capitalizeFile(&error);
+  if (checkFile(&error) || checkFile2(&error) || errorLength(&error))
+    return (1);
+  cleanFile(&error);
+  if (checkBoat(&error) || checkBoat2(&error) || checkBoat3(&error))
     return (1);
   return (0);
 }

@@ -4,58 +4,11 @@
 ** Made by Louis HATTE
 ** Login   <louis.hatte@epitech.net>
 ** 
-** Started on  Tue Jan 31 12:56:57 2017 Louis HATTE
-** Last update Thu Feb 16 13:39:31 2017 Louis HATTE
+** Started on  Fri Feb 17 11:25:25 2017 Louis HATTE
+** Last update Fri Feb 17 11:26:24 2017 Louis HATTE
 */
 
 #include "include/my.h"
-
-int             check_coords_part2(t_coords *var)
-{
-  if ((var->char1 - var->char3) == 0 && (var->char2 - var->char4) != 0)
-    {
-      if (((var->char2 - var->char4 + 1) != var->size)
-          && ((var->char4 - var->char2 + 1) != var->size))
-        return (-1);
-    }
-  else if ((var->char1 - var->char3) != 0 && (var->char2 - var->char4) == 0)
-    {
-      if (((var->char1 - var->char3 + 1) != var->size)
-          && ((var->char3 - var->char1 + 1) != var->size))
-        return (-1);
-    }
-  else
-    return (-1);
-  return (0);
-}
-
-int             check_coords(int fd)
-{
-  int           i;
-  int           k;
-  t_coords      *var;
-  char          *buffer;
-
-  if ((buffer = malloc(sizeof(char) * 33)) == NULL)
-    return (1);
-  read(fd, buffer, 1024);
-  if ((var = malloc(sizeof(t_coords))) == NULL)
-    return (1);
-  i = 2;
-  k = 0;
-  while (++k != 5)
-    {
-      var->size = buffer[i - 2] - 48;
-      var->char1 = buffer[i];
-      var->char2 = buffer[i + 1];
-      var->char3 = buffer[i + 3];
-      var->char4 = buffer[i + 4];
-      if (check_coords_part2(var) == -1)
-        return (1);
-      i += 8;
-    }
-  return (0);
-}
 
 int     my_getnbr2(char *str)
 {
@@ -90,4 +43,81 @@ int     *lengthTabler()
   length[2] = 4;
   length[3] = 5;
   return (length);
+}
+
+int     errorLength(t_error *error)
+{
+  int   *length;
+  int   i;
+  int   j;
+  int   a;
+
+  if ((length = lengthTabler()) == NULL)
+    return (1);
+  i = (j = (a = 0));
+  while (j < 4)
+    {
+      a = my_getnbr2(error->file[j]);
+      while (a != length[i] && ++i < 4);
+      if (a == length[i])
+	length[i] = 1;
+      i = 0;
+      j++;
+    }
+  while (length[i++] == 1);
+  if (i != 5)
+    return (1);
+  return (0);
+}
+
+int     checkFile2(t_error *error)
+{
+  int   j;
+
+  j = 0;
+  while (j < 4)
+    {
+      if (error->file[j][5] >= '1' && error->file[j][5] <= '8')
+	{
+	  if ((error->file[j][6] < 'A' || error->file[j][6] > 'H'))
+	    return (1);
+	}
+      else if (error->file[j][5] >= 'A' && error->file[j][5] <= 'H')
+	{
+	  if ((error->file[j][6] < '1' || error->file[j][6] > '8'))
+	    return (1);
+	}
+      else
+	return (1);
+      j++;
+    }
+  return (0);
+}
+
+int     checkFile(t_error *error)
+{
+  int   j;
+
+  j = 0;
+  while (j < 4)
+    {
+      if ((error->file[j][1] != ':') || (error->file[j][4] =! ':') ||
+	  (error->file[j][0] < '2' || error->file[j][0] > '5') ||
+	  (error->file[j][7] != '\n'))
+	return (1);
+      if (error->file[j][2] >= '1' && error->file[j][2] <= '8')
+	{
+	  if (error->file[j][3] < 'A' || error->file[j][3] > 'H')
+	    return (1);
+	}
+      else if (error->file[j][2] >= 'A' && error->file[j][2] <= 'H')
+	{
+	  if (error->file[j][3] < '1' || error->file[j][3] > '8')
+	    return (1);
+	}
+      else
+	return (1);
+      j++;
+    }
+  return (0);
 }

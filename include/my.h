@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:51:38 2017 Louis HATTE
-** Last update Thu Feb 16 15:28:03 2017 Antoine Hartwig
+** Last update Fri Feb 17 11:38:32 2017 Louis HATTE
 */
 
 #ifndef MY_H_
@@ -23,9 +23,15 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <signal.h>
+#include "gnl.h"
 
 #define COORDS0 ((navy->coords[0] - 65) * 2) + 2
 #define COORDS1 navy->coords[1] - 49 + 3
+
+typedef struct	s_error
+{
+  char	**file;
+}		t_error;
 
 typedef struct	s_coords
 {
@@ -69,15 +75,20 @@ char    *my_readLine(int, char *, bool *);
 char    *get_next_line(const int);
 int	errorInput(int, char **);
 void	hDisplay();
+int	checkBoat3(t_error *);
+int	checkBoat2(t_error *);
+int	checkBoat(t_error *);
+int	cleanFile(t_error *);
 int	my_getnbr2(char *);
 int	*lengthTabler();
-int	errorLength(int, char **);
-int	characters(char);
+int	errorLength(t_error *);
+int	checkFile2(t_error *);
+int	checkFile(t_error *);
+int	capitalizeFile(t_error *);
+int	takeFile(int, char **, t_error *);
 int	errorLines(int, char **);
 int	chooseAv(int, char **);
 int	errorMap(int, char **);
-int     check_coords(int);
-int     check_coords_part2(t_coords *);
 int	my_lines2(char *, char);
 int	*my_columns2(char *, char, int);
 char	**my_strToWordTab2(char *, char);
