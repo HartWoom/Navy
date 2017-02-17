@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb 16 14:00:41 2017 Louis HATTE
-** Last update Fri Feb 17 13:58:08 2017 Antoine Hartwig
+** Last update Fri Feb 17 14:09:18 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
@@ -46,14 +46,14 @@ int		host_part2(t_navy *navy)
 	{
 	  navy->coords[1] = navy->key[usr1];
 	  tell_if_hit_or_not(navy, 2);
-	  if (navy->ships == 3 || navy->ships_sunk == 3)
+	  if (navy->ships == 14 || navy->ships_sunk == 14)
 	    return (tell_victory_or_defeat(navy, 1));
 	  flag = update_map(navy, 1);
 	  display_map(navy, 1);
 	  if (flag == 10 || flag == 20)
 	    return (flag);
 	  attack(navy->other_pid, navy);
-	  if (navy->ships == 3 || navy->ships_sunk == 3)
+	  if (navy->ships == 14 || navy->ships_sunk == 14)
 	    return (tell_victory_or_defeat(navy, 1));
 	  usr1 = 0;
 	  return (flag);
@@ -109,7 +109,7 @@ int		client_part2(t_navy *navy)
           navy->coords[1] = navy->key[usr1];
           tell_if_hit_or_not(navy, 1);
 	  my_putchar('W');
-	  if (navy->ships == 3 || navy->ships_sunk == 3)
+	  if (navy->ships == 14 || navy->ships_sunk == 14)
 	    return (tell_victory_or_defeat(navy, 2));
 	  my_putchar('X');
           attack(navy->other_pid,  navy);

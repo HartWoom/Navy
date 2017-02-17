@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb 16 14:00:50 2017 Louis HATTE
-** Last update Fri Feb 17 14:06:18 2017 Antoine Hartwig
+** Last update Fri Feb 17 14:09:48 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
@@ -43,9 +43,9 @@ int	Player1(t_navy *navy, int x, int y, int usr1)
     }
   usleep(10000);
   Player1_part2(navy, x, y);
-  if (navy->ships_sunk == 3)
+  if (navy->ships_sunk == 14)
     return (10);
-  if (navy->ships == 3)
+  if (navy->ships == 14)
     return (20);
   return (0);
 }
@@ -81,9 +81,9 @@ int	Player2(t_navy *navy, int x, int y, int usr1)
       send_signal(navy->other_pid, 'o', navy->key);
     }
   Player2_part2(navy, usr1);
-  if (navy->ships_sunk == 3)
+  if (navy->ships_sunk == 14)
     return (10);
-  if (navy->ships == 3)
+  if (navy->ships == 14)
     return (20);
   return (0);
 }
