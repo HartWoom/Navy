@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb 16 14:00:41 2017 Louis HATTE
-** Last update Thu Feb 16 15:35:09 2017 Antoine Hartwig
+** Last update Fri Feb 17 11:50:51 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
@@ -50,6 +50,7 @@ int		host_part2(t_navy *navy)
 	  if (flag == 10 || flag == 20)
 	    return (flag);
 	  attack(navy->other_pid,  navy);
+	  usr1 = 0;
 	  return (flag);
 	}
       usr1 = 0;
@@ -104,6 +105,7 @@ int		client_part2(t_navy *navy)
           tell_if_hit_or_not(navy, 1);
           attack(navy->other_pid,  navy);
 	  flag = update_map(navy, 2);
+	  usr1 = 0;
           return (flag);
         }
       usr1 = 0;
