@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Thu Feb 16 14:00:41 2017 Louis HATTE
-** Last update Fri Feb 17 14:09:18 2017 Antoine Hartwig
+** Last update Fri Feb 17 14:11:33 2017 Antoine Hartwig
 */
 
 #include "include/my.h"
@@ -108,10 +108,8 @@ int		client_part2(t_navy *navy)
         {
           navy->coords[1] = navy->key[usr1];
           tell_if_hit_or_not(navy, 1);
-	  my_putchar('W');
 	  if (navy->ships == 14 || navy->ships_sunk == 14)
 	    return (tell_victory_or_defeat(navy, 2));
-	  my_putchar('X');
           attack(navy->other_pid,  navy);
 	  flag = update_map(navy, 2);
 	  display_map(navy, 2);
