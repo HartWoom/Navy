@@ -5,7 +5,7 @@
 ** Login   <louis.hatte@epitech.net>
 ** 
 ** Started on  Tue Jan 31 09:51:38 2017 Louis HATTE
-** Last update Fri Feb 17 11:38:32 2017 Louis HATTE
+** Last update Fri Feb 17 12:12:58 2017 Antoine Hartwig
 */
 
 #ifndef MY_H_
@@ -32,15 +32,6 @@ typedef struct	s_error
 {
   char	**file;
 }		t_error;
-
-typedef struct	s_coords
-{
-  int	size;
-  int	char1;
-  int	char2;
-  int	char3;
-  int	char4;
-}	t_coords;
 
 typedef struct  s_navy
 {
