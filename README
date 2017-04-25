@@ -1,0 +1,36 @@
+The navy is imitating the board game naval battle.
+
+In order to play you will have to open 2 shells.
+In the first one you have to launch the binary "./navy ships_positions", and in the second shell "./navy first_player_pid ships_positions". ships_positions being the file containing positions of your ships.
+
+Your file will have 4 lines, they will be formatted the following way : "LENGTH:FIRST_SQUARE:LAST_SQUARE".
+
+LENGTH is the ship's length, you have 4 value : 2, 3, 4 and 5.
+FIRST_SQUARE and LAST_SQUARE are respectively the first and last position.
+
+Here are some examples :
+
+2:C1:C2
+4:B5:B8
+3:D4:F4
+5:D7:H7
+
+2:C4:D4
+3:H1:H3
+4:E6:H6
+5:B1:F1
+
+And here is the map so you can visualize :
+
+   |A B C D E F G H
+  -+---------------
+  1|. . . . . . . .
+  2|. . . . . . . .
+  3|. . . . . . . .
+  4|. . . . . . . .
+  5|. . . . . . . .
+  6|. . . . . . . .
+  7|. . . . . . . .
+  8|. . . . . . . .
+
+Have fun c:
